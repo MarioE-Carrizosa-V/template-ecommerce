@@ -1,0 +1,2 @@
+[build]
+  command = "https://bonnelli-template.netlify.app/=\"${https://bonnelli-template.netlify.app/}\" yarn build"
