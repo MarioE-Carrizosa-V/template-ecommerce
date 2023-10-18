@@ -6,7 +6,10 @@ import MobileLogo from '@icons/bonelli-mobile.svg';
 import DesktopLogo from '@icons/bonelli.svg';
 import { LanguageSelector } from '@src/components/features/language-selector';
 
+import loginPassword from '@src/vtex/login/loginPassword';
+
 export const HEADER_HEIGHT = 60;
+
 
 export const Header = (props: BoxProps) => {
   const { t } = useTranslation();
@@ -33,6 +36,7 @@ export const Header = (props: BoxProps) => {
           title={t('common.logoImageAltText')}
         />
       </Link>
+      <a onClick={()=>loginPassword()}>Login</a>
       <LanguageSelector />
     </Flex>
   );
