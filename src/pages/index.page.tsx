@@ -16,17 +16,22 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
   return (
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
-      <HeroBanner {...page} />
       {page.productsCollection?.items && (
         <Box
           mt={{
-            base: 5,
-            md: 9,
-            lg: 16,
+            // base: 5,
+            // md: 9,
+            // lg: 16,
           }}>
+          <HeroBanner {...page} />
           <ProductTileGrid
             title={t('product.trendingProducts')}
             products={page.productsCollection.items}
+            // mt={{
+            //   base: 5,
+            //   md: 9,
+            //   lg: 16,
+            // }}
           />
         </Box>
       )}

@@ -6,13 +6,14 @@ import MobileLogo from '@icons/bonelli-mobile.svg';
 import DesktopLogo from '@icons/bonelli.svg';
 import { LanguageSelector } from '@src/components/features/language-selector';
 
-export const HEADER_HEIGHT = 60;
+export const HEADER_HEIGHT = 50;
 
 export const Header = (props: BoxProps) => {
   const { t } = useTranslation();
 
   return (
     <Flex
+      backgroundColor='#e4007c'
       as="nav"
       justifyContent="space-between"
       align="center"
@@ -23,7 +24,7 @@ export const Header = (props: BoxProps) => {
       {...props}>
       <Link href="/" title={t('common.homepage')}>
         <Box
-          display={{ base: 'none', md: 'block', lg: 'block' }}
+          display={{ base: 'none', md: 'block', lg: 'block'}}
           as={DesktopLogo}
           title={t('common.logoImageAltText')}
         />

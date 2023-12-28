@@ -84,13 +84,14 @@ export const HeroBanner = ({
       position="relative"
       gridRow={2}
       gridColumn={1}
-      mt={`-${HEADER_HEIGHT}px`}
+      // mt={`-${HEADER_HEIGHT}px`}
       {...inspectorProps({ fieldId: 'heroBannerImage' })}>
       <StyledBox
         gridColumnStart={2}
         zIndex={0}
         gridArea={{ base: '1 / 1 / 2 / 2' }}
-        maxHeight={{ base: '50vh', lg: '80vh' }}>
+        maxHeight={{ base: '50vh', lg: '80vh' }}
+        >
         {heroBannerImage?.url && (
           <CtfImage
             imageProps={{
