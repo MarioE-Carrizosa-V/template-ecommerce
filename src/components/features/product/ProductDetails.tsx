@@ -20,6 +20,15 @@ export const ProductDetails = ({
   const inspectorProps = useContentfulInspectorMode({ entryId });
 
   const settings = {
+    customPaging: function(i) {
+      return (
+        <a>
+          <img src={'https://static.vecteezy.com/system/resources/thumbnails/013/758/882/small/abstract-circle-and-rays-logo-illustration-in-trendy-and-minimal-style-png.png'} />
+        </a>
+      );
+    },
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
     autoplay: true,
     infinite: true,
     speed: 1000,
@@ -36,8 +45,8 @@ export const ProductDetails = ({
   }
 
   const allImages = [
+    featuredProductImage,
     ...(productImagesCollection?.items ?? []),
-    featuredProductImage // Agregar las imágenes de la colección si existen
   ];
     console.log(allImages);
     
@@ -47,8 +56,7 @@ export const ProductDetails = ({
         <GridItem colSpan={{ base: 12, lg: 7, xl: 8 }}>
           <Flex flexDirection="column" gap={{ base: 3, lg: 5 }}>
 
-          <Slider {...settings}
-                style={{ height: '50%', display: 'flex', justifyContent: 'center' }}>
+          <Slider {...settings}>
               { 
               allImages.map((image, index) => (
                 image?.url && image?.title &&
