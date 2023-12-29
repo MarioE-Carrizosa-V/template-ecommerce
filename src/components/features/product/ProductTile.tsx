@@ -16,7 +16,6 @@ export const ProductTile = ({
 
   const [hovered, setHovered] = useState(false);
 
-
   const shadow = {
     boxShadow: '0px 2px 6px 0px',
     transition: 'box-shadow 0.3s ease',
@@ -26,9 +25,7 @@ export const ProductTile = ({
     boxShadow: 'none',
   }
   return slug ? (
-    <div {...inspectorProps({ fieldId: 'featuredProductImage' })}       style={hovered? noShadow : shadow}
-    onMouseEnter={() => setHovered(true)}
-    onMouseLeave={() => setHovered(false)}>
+    <div {...inspectorProps({ fieldId: 'featuredProductImage' })} style={hovered? noShadow : shadow} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
       <Box as={Link} href={slug}>
         {featuredProductImage && (
           <Box borderRadius={4} overflow="hidden">

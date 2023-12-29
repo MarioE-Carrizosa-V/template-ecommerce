@@ -9,7 +9,6 @@ interface ProductTileGridProps {
 }
 
 export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
-  console.log(products);
   
   return (
     <Container>
@@ -23,6 +22,7 @@ export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
         rowGap={{ base: 6, lg: 6 }}
         columnGap={{ base: 4, lg: 24 }}>
         {products.map((product, index) => {
+          
           return <GridItem key={index}>{product ? <ProductTile {...product} /> : null}</GridItem>;
         })}
       </Grid>
