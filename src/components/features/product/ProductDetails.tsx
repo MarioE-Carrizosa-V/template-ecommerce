@@ -18,8 +18,6 @@ export const ProductDetails = ({
 }: PageProductFieldsFragment) => {
   const theme = useTheme();
   const inspectorProps = useContentfulInspectorMode({ entryId });
-  console.log(featuredProductImage);
-  console.log(productImagesCollection?.items);
 
   const settings = {
     autoplay: true,
@@ -37,8 +35,12 @@ export const ProductDetails = ({
     pauseOnHover: true,
   }
 
-  const allImages = [featuredProductImage, ...productImagesCollection?.items]
-  
+  const allImages = [
+    ...(productImagesCollection?.items ?? []),
+    featuredProductImage // Agregar las imágenes de la colección si existen
+  ];
+    console.log(allImages);
+    
   return (
     <Container mt={{ base: 6, lg: 16 }}>
       <Grid templateColumns="repeat(12, 1fr)" gap={{ base: 5, lg: 12 }}>
@@ -49,11 +51,11 @@ export const ProductDetails = ({
                 style={{ height: '50%', display: 'flex', justifyContent: 'center' }}>
               { 
               allImages.map((image, index) => (
-                image?.url &&
+                image?.url && image?.title &&
             <img
+              alt={image?.title}
               key={index}
               src={image?.url}
-              alt={image.title}
            // style={{ width: setting?.imageWidth, height: setting?.imageHeigth }}
             />
               ))}
