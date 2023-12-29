@@ -12,7 +12,7 @@ export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
   return (
     <Container>
       {title && (
-        <Heading as="h2" mb={3}>
+        <Heading as="h2" mb={3} style={{justifyContent: 'center', display:'flex', fontFamily: 'robotoMedium'}}>
           {title}
         </Heading>
       )}
