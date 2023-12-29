@@ -24,7 +24,7 @@ export const ProductDetails = ({
   const settings = {
     autoplay: true,
     infinite: true,
-    speed: 2000,
+    speed: 1000,
     slidesToShow: 1,
     autoplaySpeed: 4000,
     cssEase: 'linear',
@@ -53,6 +53,7 @@ export const ProductDetails = ({
             <img
               key={index}
               src={image?.url}
+              alt={image.title}
            // style={{ width: setting?.imageWidth, height: setting?.imageHeigth }}
             />
               ))}
