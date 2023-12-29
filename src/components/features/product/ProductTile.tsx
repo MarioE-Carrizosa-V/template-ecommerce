@@ -28,8 +28,8 @@ export const ProductTile = ({
           </Box>
         )}
         {price && (
-          <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="500">
-            <FormatCurrency value={price} />
+          <Text {...inspectorProps({ fieldId: 'price' })} mt={3} fontWeight="600" style={{color: 'red', font: 'roboto'}}>
+            <FormatCurrency value={price}/>
           </Text>
         )}
       </Box>
