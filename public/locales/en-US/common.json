@@ -2,9 +2,9 @@
   "common": {
     "homepage": "Homepage",
     "logoImageAltText": "Logo",
-    "aboutUs": "about us",
-    "description1": "Founded in 1984 by designer Chantelle West, we've always believed in the power of locally made goods.",
-    "description2": "The quality of the craftsmanship and the local artisans we employ are what make Luxette our mission in life.",
+    "aboutUs": "¿Quiénes somos?",
+    "description1": "Liverpool es la cadena de almacenes departamentales de mayor cobertura a lo largo del país.",
+    "description2": "La combinación de una amplia oferta comercial, una experiencia de compra emocionante, infraestructura sólida y enfoque de rentabilidad nos permiten servir al cliente y así contar con su preferencia",
     "poweredBy": "Powered by",
     "regionalSettings": "Regional Settings",
     "language": "Language"
@@ -12,8 +12,8 @@
   "product": {
     "trendingProducts": "Para tu hogar",
     "relatedProducts": "Te podria interesar",
-    "addToCart": "Add to cart",
-    "quantity": "Quantity"
+    "addToCart": "Añadir al carrito",
+    "quantity": "Cantidad"
   },
   "notFound": {
     "title": "Page not found",

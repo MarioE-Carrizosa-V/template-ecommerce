@@ -23,7 +23,7 @@ export const ProductDetails = ({
     customPaging: function(i) {
       return (
         <a>
-          <img src={'https://static.vecteezy.com/system/resources/thumbnails/013/758/882/small/abstract-circle-and-rays-logo-illustration-in-trendy-and-minimal-style-png.png'} />
+          <img src='https://cryptologos.cc/logos/polkadot-new-dot-logo.png' alt='Dot' />
         </a>
       );
     },
