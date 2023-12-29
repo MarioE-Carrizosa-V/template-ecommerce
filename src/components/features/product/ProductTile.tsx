@@ -13,8 +13,14 @@ export const ProductTile = ({
   sys: { id: entryId },
 }: PageProductFieldsFragment) => {
   const inspectorProps = useContentfulInspectorMode({ entryId });
+
+  const shadow = {
+    boxShadow: '0px 2px 6px 0px',
+    transition: 'box-shadow 0.3s ease',
+  };
+
   return slug ? (
-    <div {...inspectorProps({ fieldId: 'featuredProductImage' })}>
+    <div {...inspectorProps({ fieldId: 'featuredProductImage' })} style={shadow} onMouseOver={(e) => e.currentTarget.style.boxShadow = 'none'} onMouseOut={(e) => e.currentTarget.style.boxShadow = shadow.boxShadow}>
       <Box as={Link} href={slug}>
         {featuredProductImage && (
           <Box borderRadius={4} overflow="hidden">

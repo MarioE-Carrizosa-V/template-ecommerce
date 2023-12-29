@@ -9,6 +9,8 @@ interface ProductTileGridProps {
 }
 
 export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
+  console.log(products);
+  
   return (
     <Container>
       {title && (
