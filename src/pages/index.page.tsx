@@ -4,6 +4,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next';
 import { useTranslation } from 'next-i18next';
 
 import { HeroBanner } from '@src/components/features/hero-banner';
+import { PromoLiverpool } from '@src/components/features/PromoLiverpool';
 import { ProductTileGrid } from '@src/components/features/product';
 import { SeoFields } from '@src/components/features/seo';
 import { client, previewClient } from '@src/lib/client';
@@ -12,7 +13,7 @@ import { getServerSideTranslations } from '@src/pages/utils/get-serverside-trans
 const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const { t } = useTranslation();
   const page = useContentfulLiveUpdates(props.page);
-
+  
   return (
     <>
       {page.seoFields && <SeoFields {...page.seoFields} />}
@@ -28,6 +29,8 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             //   lg: 16,
             // }}
           />
+          <br />
+          <PromoLiverpool {...page} />
         </Box>
       )}
     </>
@@ -38,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async ({ locale, preview }
   try {
     const gqlClient = preview ? previewClient : client;
 
-    const data = await gqlClient.pageLanding({ locale, preview });
+    const data = await gqlClient.pageLanding({ locale, preview });      
 
     const page = data.pageLandingCollection?.items[0];
 

@@ -560,6 +560,8 @@ export type PageLanding = Entry & {
   internalName?: Maybe<Scalars['String']>;
   linkedFrom?: Maybe<PageLandingLinkingCollections>;
   productsCollection?: Maybe<PageLandingProductsCollection>;
+  promocionesLiverpoolCollection?: Maybe<AssetCollection>;
+  liverpoolPocket?: Maybe<Asset>;
   seoFields?: Maybe<ComponentSeo>;
   sys: Sys;
 };
@@ -1121,10 +1123,15 @@ export type CfPageProductNestedFilter = {
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalName?: string | null, heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
+export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalName?: string | null,  heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
-  ) | null, heroBannerImage?: (
+  ) | null, 
+  liverpoolPocket?: (
+    { __typename?: 'Asset' }
+    & ImageFieldsFragment
+  ) | null,
+  heroBannerImage?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
   ) | null, productsCollection?: { __typename?: 'PageLandingProductsCollection', items: Array<(
@@ -1291,6 +1298,9 @@ export const PageLandingFieldsFragmentDoc = gql`
   heroBannerHeadline
   heroBannerHeadlineColor
   heroBannerImage {
+    ...ImageFields
+  }
+  liverpoolPocket{
     ...ImageFields
   }
   productsCollection(limit: 6) {

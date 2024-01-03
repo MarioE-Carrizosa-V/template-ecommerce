@@ -16,6 +16,12 @@ fragment PageLandingFields on PageLanding {
   heroBannerImage {
     ...ImageFields
   }
+    liverpoolPocket{
+    ...ImageFields
+  }
+  promocionesLiverpoolCollection{
+    ...items
+  }
   productsCollection(limit: 6) {
     items {
       ...PageProductFields
