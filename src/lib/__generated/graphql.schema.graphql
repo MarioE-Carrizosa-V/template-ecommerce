@@ -422,6 +422,8 @@ type PageLanding implements Entry {
   productsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): PageLandingProductsCollection
   promocionesLiverpoolCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
   liverpoolPocket(locale: String, preview: Boolean): Asset
+  tituloLiverpool(locale: String): String
+  
   seoFields(locale: String, preview: Boolean): ComponentSeo
   sys: Sys!
 }
@@ -452,6 +454,7 @@ input PageLandingFilter {
   heroBannerHeadline_not_contains: String
   heroBannerHeadline_not_in: [String]
   heroBannerImage_exists: Boolean
+  promocionesLiverpoolCollection_exists: Boolean
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean

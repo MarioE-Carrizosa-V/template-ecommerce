@@ -561,6 +561,7 @@ export type PageLanding = Entry & {
   linkedFrom?: Maybe<PageLandingLinkingCollections>;
   productsCollection?: Maybe<PageLandingProductsCollection>;
   promocionesLiverpoolCollection?: Maybe<AssetCollection>;
+  tituloLiverpool?: Maybe<Scalars['String']>;
   liverpoolPocket?: Maybe<Asset>;
   seoFields?: Maybe<ComponentSeo>;
   sys: Sys;
@@ -572,6 +573,12 @@ export type PageLandingHeroBannerHeadlineArgs = {
   locale?: InputMaybe<Scalars['String']>;
 };
 
+export type PageLandingpromocionesLiverpoolCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
 
 /** To have an entry point for the app [See type definition](https://app.contentful.com/spaces/a67phq2m6waq/content_types/pageLanding) */
 export type PageLandingHeroBannerHeadlineColorArgs = {
@@ -640,6 +647,7 @@ export type PageLandingFilter = {
   heroBannerHeadline_not_contains?: InputMaybe<Scalars['String']>;
   heroBannerHeadline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   heroBannerImage_exists?: InputMaybe<Scalars['Boolean']>;
+  promocionesLiverpoolCollection_exists?: InputMaybe<Scalars['Boolean']>;
   internalName?: InputMaybe<Scalars['String']>;
   internalName_contains?: InputMaybe<Scalars['String']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1123,7 +1131,7 @@ export type CfPageProductNestedFilter = {
 
 export type ImageFieldsFragment = { __typename: 'Asset', title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, contentType?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalName?: string | null,  heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
+export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalName?: string | null,  heroBannerHeadline?: string | null, heroBannerHeadlineColor?: string | null, tituloLiverpool?: string | null, sys: { __typename?: 'Sys', id: string, spaceId: string }, seoFields?: (
     { __typename?: 'ComponentSeo' }
     & SeoFieldsFragment
   ) | null, 
@@ -1137,6 +1145,10 @@ export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalNam
   ) | null, productsCollection?: { __typename?: 'PageLandingProductsCollection', items: Array<(
       { __typename?: 'PageProduct' }
       & PageProductFieldsFragment
+    ) | null> } | null, 
+    promocionesLiverpoolCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & ImageFieldsFragment
     ) | null> } | null };
 
 export type PageLandingQueryVariables = Exact<{
@@ -1167,7 +1179,8 @@ export type BasePageProductFieldsFragment = { __typename: 'PageProduct', interna
   ) | null, featuredProductImage?: (
     { __typename?: 'Asset' }
     & ImageFieldsFragment
-  ) | null, productImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
+  ) | null, 
+  productImagesCollection?: { __typename?: 'AssetCollection', items: Array<(
       { __typename?: 'Asset' }
       & ImageFieldsFragment
     ) | null> } | null };
@@ -1295,6 +1308,7 @@ export const PageLandingFieldsFragmentDoc = gql`
   seoFields {
     ...SeoFields
   }
+  tituloLiverpool
   heroBannerHeadline
   heroBannerHeadlineColor
   heroBannerImage {
@@ -1302,6 +1316,11 @@ export const PageLandingFieldsFragmentDoc = gql`
   }
   liverpoolPocket{
     ...ImageFields
+  }
+  promocionesLiverpoolCollection(limit: 6) {
+    items {
+      ...ImageFields
+    }
   }
   productsCollection(limit: 6) {
     items {

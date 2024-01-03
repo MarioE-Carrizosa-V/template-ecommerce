@@ -27,7 +27,6 @@ export const HeroBanner = ({
   heroBannerHeadline,
   heroBannerHeadlineColor,
   heroBannerImage,
-  liverpoolPocket,
   sys: { id: entryId },
 }: PageLandingFieldsFragment) => {
   const router = useRouter();

@@ -11,6 +11,7 @@ fragment PageLandingFields on PageLanding {
   # Tutorial: contentful-and-the-starter-template.md
   # Uncomment the line below to add the Greeting field to the query
   # greeting
+  tituloLiverpool
   heroBannerHeadline
   heroBannerHeadlineColor
   heroBannerImage {
@@ -20,11 +21,12 @@ fragment PageLandingFields on PageLanding {
     ...ImageFields
   }
   promocionesLiverpoolCollection{
-    ...items
+    items{
+        ...ImageFields
   }
   productsCollection(limit: 6) {
     items {
-      ...PageProductFields
+        ...PageProductFields
     }
   }
 }
