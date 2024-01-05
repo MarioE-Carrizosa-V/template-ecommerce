@@ -1,10 +1,29 @@
 import { Box, Container, Flex, Grid, GridItem, Heading, Text, useTheme } from '@chakra-ui/react';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
-
-import { CtfImage } from '@src/components/features/contentful/ctf-image';
+import Slider from 'react-slick';
 import { FormatCurrency } from '@src/components/shared/format-currency';
 import { QuantitySelector } from '@src/components/shared/quantity-selector';
 import { PageProductFieldsFragment } from '@src/lib/__generated/sdk';
+
+export const settings = {
+  customPaging: function(i) {
+    return (
+      <a>
+        <img src='https://cryptologos.cc/logos/polkadot-new-dot-logo.png' alt='Dot' />
+      </a>
+    );
+  },
+  dots: true,
+  dotsClass: "slick-dots slick-thumb",
+  autoplay: true,
+  infinite: true,
+  speed: 1000,
+  slidesToShow: 1,
+  autoplaySpeed: 4000,
+  centerMode: true,
+  centerPadding: '0px',
+  pauseOnHover: true,
+}
 
 export const ProductDetails = ({
   name,
@@ -17,12 +36,31 @@ export const ProductDetails = ({
   const theme = useTheme();
   const inspectorProps = useContentfulInspectorMode({ entryId });
 
+  const allImages = [
+    featuredProductImage,
+    ...(productImagesCollection?.items ?? []),
+  ];
+    
   return (
     <Container mt={{ base: 6, lg: 16 }}>
       <Grid templateColumns="repeat(12, 1fr)" gap={{ base: 5, lg: 12 }}>
         <GridItem colSpan={{ base: 12, lg: 7, xl: 8 }}>
           <Flex flexDirection="column" gap={{ base: 3, lg: 5 }}>
-            {featuredProductImage && (
+
+          <Slider {...settings}>
+              { 
+              allImages.map((image, index) => (
+                image?.url && image?.title &&
+            <img
+              style={{width: '60%', margin: '16 px'}}
+              alt={image?.title}
+              key={index}
+              src={image?.url}
+           // style={{ width: setting?.imageWidth, height: setting?.imageHeigth }}
+            />
+              ))}
+      </Slider>
+            {/* {featuredProductImage && (
               <CtfImage
                 livePreviewProps={inspectorProps({ fieldId: 'featuredProductImage' })}
                 {...featuredProductImage}
@@ -30,6 +68,8 @@ export const ProductDetails = ({
             )}
             {productImagesCollection?.items &&
               productImagesCollection.items.map(image => {
+                console.log(image);
+                
                 return image ? (
                   <CtfImage
                     livePreviewProps={inspectorProps({ fieldId: 'productImages' })}
@@ -40,7 +80,7 @@ export const ProductDetails = ({
                     {...image}
                   />
                 ) : null;
-              })}
+              })} */}
           </Flex>
         </GridItem>
 

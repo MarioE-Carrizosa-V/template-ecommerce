@@ -9,8 +9,10 @@ import {
   DrawerCloseButton,
   useDisclosure,
   Button,
+  Flex
 } from '@chakra-ui/react';
-import { LanguageIcon } from '@contentful/f36-icons';
+import LanguageIcon from '@icons/Login.svg';
+import ShopingBag from '@icons/bagShopping.svg';
 import { useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
@@ -24,11 +26,13 @@ export const LanguageSelectorMobile = ({ displayName, localeName }) => {
   const firstField = useRef<HTMLSelectElement | null>(null);
 
   return (
-    <>
+    <Flex justifyContent="center" alignItems="center" >
       <Button variant="unstyled" onClick={onOpen}>
-        <LanguageIcon width="18px" height="18px" variant="secondary" />
+      <LanguageIcon width="40px" height="40px" variant="secondary"/>
       </Button>
-      <Drawer isOpen={isOpen} onClose={onClose} placement="right" initialFocusRef={firstField}>
+      <ShopingBag width="32px" height="32px"/>
+
+      {/* <Drawer isOpen={isOpen} onClose={onClose} placement="right" initialFocusRef={firstField}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
@@ -57,7 +61,7 @@ export const LanguageSelectorMobile = ({ displayName, localeName }) => {
             </Select>
           </DrawerBody>
         </DrawerContent>
-      </Drawer>
-    </>
+      </Drawer> */}
+    </Flex>
   );
 };

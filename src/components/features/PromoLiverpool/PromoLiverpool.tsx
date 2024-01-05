@@ -1,14 +1,11 @@
-import { Flex, Heading, Box, Grid, Container } from '@chakra-ui/react';
+import { Heading, Box, Grid, GridItem } from '@chakra-ui/react';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
 import { CtfImage } from '@src/components/features/contentful/ctf-image/CtfImage';
-import { HEADER_HEIGHT } from '@src/components/templates/header';
 import { PageLandingFieldsFragment } from '@src/lib/__generated/sdk';
-
 
 const StyledBox = styled(Box)`
   img {
@@ -19,14 +16,13 @@ const StyledBox = styled(Box)`
   }
 `;
 
-export const HeroBanner = ({
-  
+export const PromoLiverpool = ({
   // Tutorial: contentful-and-the-starter-template.md
   // Uncomment the line below to make the Greeting field available to render
   // greeting,
-  heroBannerHeadline,
-  heroBannerHeadlineColor,
-  heroBannerImage,
+  tituloLiverpool,
+  promocionesLiverpoolCollection,
+  liverpoolPocket,
   sys: { id: entryId },
 }: PageLandingFieldsFragment) => {
   const router = useRouter();
@@ -82,57 +78,50 @@ export const HeroBanner = ({
   }, [headingVisible, router.events, router.query]);
 
   return (
+    <div style={{ maxWidth: '1600px', margin: '0 auto' }}>
     <Grid
-      position="relative"
-      gridRow={2}
-      gridColumn={1}
-      // mt={`-${HEADER_HEIGHT}px`}
-      {...inspectorProps({ fieldId: 'heroBannerImage' })}>
-      <StyledBox
-        gridColumnStart={2}
-        zIndex={0}
-        gridArea={{ base: '1 / 1 / 2 / 2' }}
-        maxHeight={{ base: '50vh', lg: '80vh' }}
-        >
-        {heroBannerImage?.url && (
-          <CtfImage
-            imageProps={{
-              sizes: '100vw',
-            }}
-            {...heroBannerImage}
-          />
-        )}
-      </StyledBox>
-
-      <Flex
-        flexDirection="column"
-        zIndex={1}
-        gridArea={{ base: '1 / 1 / 2 / 2' }}
-        overflow="hidden"
-        justifyContent="flex-end"
-        maxHeight={{ base: '50vh', lg: '80vh' }}>
-        <Container ref={containerRef}>
-          <motion.div
-            initial={false}
-            animate={{
-              opacity: headingVisible ? 1 : 0,
-            }}>
-            <Heading
-              {...inspectorProps({ fieldId: 'heroBannerHeadline' })}
-              ref={headingRef}
-              as="h1"
-              letterSpacing="-0.11em"
-              color={heroBannerHeadlineColor || 'white'}
-              transform="translateY(0.33em)"
-              whiteSpace="nowrap">
-              {/* Tutorial: contentful-and-the-starter-template.md
-              {/* Uncomment the line below to render the Greeting field value */}
-              {/* {greeting} {' '} */}
-              {heroBannerHeadline}
-            </Heading>
-          </motion.div>
-        </Container>
-      </Flex>
-    </Grid>
+        justifyContent="center"  // Centrar horizontalmente
+        alignItems="center"
+        mb={3}
+        position="relative"
+        gridRow={2}
+        gridColumn={1}
+        {...inspectorProps({ fieldId: 'liverpoolPocket' })}>
+        <StyledBox gridColumnStart={2} zIndex={0} gridArea={{ base: '1 / 1 / 2 / 2' }}>
+          <Heading
+            as="h2"
+            mb={3}
+            style={{ textAlign: 'center', fontFamily: 'Arial' }}>
+            {tituloLiverpool}
+          </Heading>
+        </StyledBox>
+      </Grid>
+      <Grid
+        style={{ margin: '16px'}}
+        templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(2, 1fr)' }}
+        rowGap={{ base: 3, lg: 4 }}
+        columnGap={{ base: 3, lg: 4 }}
+      >
+        {promocionesLiverpoolCollection?.items.map((image, index) => {
+          return (
+            <GridItem key={index}>
+              {image ? (
+                <CtfImage
+                  imageProps={{
+                    sizes: '100vw',
+                  }}
+                  {...image}
+                />
+              ) : null}{' '}
+            </GridItem>
+          );
+        })}
+      </Grid>
+      {liverpoolPocket?.url && (
+        <div style={{ margin: '16px' }}>
+          <CtfImage imageProps={{}} {...liverpoolPocket} />
+        </div>
+      )}
+    </div>
   );
 };
