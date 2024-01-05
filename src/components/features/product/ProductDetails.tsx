@@ -1,12 +1,29 @@
 import { Box, Container, Flex, Grid, GridItem, Heading, Text, useTheme } from '@chakra-ui/react';
 import { useContentfulInspectorMode } from '@contentful/live-preview/react';
 import Slider from 'react-slick';
-
-import { CtfImage } from '@src/components/features/contentful/ctf-image';
 import { FormatCurrency } from '@src/components/shared/format-currency';
 import { QuantitySelector } from '@src/components/shared/quantity-selector';
 import { PageProductFieldsFragment } from '@src/lib/__generated/sdk';
-import { useEffect } from 'react';
+
+export const settings = {
+  customPaging: function(i) {
+    return (
+      <a>
+        <img src='https://cryptologos.cc/logos/polkadot-new-dot-logo.png' alt='Dot' />
+      </a>
+    );
+  },
+  dots: true,
+  dotsClass: "slick-dots slick-thumb",
+  autoplay: true,
+  infinite: true,
+  speed: 1000,
+  slidesToShow: 1,
+  autoplaySpeed: 4000,
+  centerMode: true,
+  centerPadding: '0px',
+  pauseOnHover: true,
+}
 
 export const ProductDetails = ({
   name,
@@ -19,36 +36,10 @@ export const ProductDetails = ({
   const theme = useTheme();
   const inspectorProps = useContentfulInspectorMode({ entryId });
 
-  const settings = {
-    customPaging: function(i) {
-      return (
-        <a>
-          <img src='https://cryptologos.cc/logos/polkadot-new-dot-logo.png' alt='Dot' />
-        </a>
-      );
-    },
-    dots: true,
-    dotsClass: "slick-dots slick-thumb",
-    autoplay: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 1,
-    autoplaySpeed: 4000,
-    cssEase: 'linear',
-    className: 'center',
-    centerMode: true,
-    centerPadding: '0px',
-    rows: 1,
-    slidesPerRow: 1,
-    fade: false,
-    pauseOnHover: true,
-  }
-
   const allImages = [
     featuredProductImage,
     ...(productImagesCollection?.items ?? []),
   ];
-    console.log(allImages);
     
   return (
     <Container mt={{ base: 6, lg: 16 }}>
@@ -61,6 +52,7 @@ export const ProductDetails = ({
               allImages.map((image, index) => (
                 image?.url && image?.title &&
             <img
+              style={{width: '60%', margin: '16 px'}}
               alt={image?.title}
               key={index}
               src={image?.url}

@@ -7,7 +7,6 @@ import { useEffect, useRef, useState } from 'react';
 import { CtfImage } from '@src/components/features/contentful/ctf-image/CtfImage';
 import { PageLandingFieldsFragment } from '@src/lib/__generated/sdk';
 
-
 const StyledBox = styled(Box)`
   img {
     width: 100%;
@@ -18,7 +17,6 @@ const StyledBox = styled(Box)`
 `;
 
 export const PromoLiverpool = ({
-  
   // Tutorial: contentful-and-the-starter-template.md
   // Uncomment the line below to make the Greeting field available to render
   // greeting,
@@ -77,48 +75,52 @@ export const PromoLiverpool = ({
       window.removeEventListener('resize', handleFontSize);
       router.events.off('routeChangeComplete', handleFontSize);
     };
-  }, [headingVisible, router.events, router.query]);  
+  }, [headingVisible, router.events, router.query]);
 
   return (
-    <div>
+    <div style={{ maxWidth: '1600px', margin: '0 auto' }}>
     <Grid
-      mb={3}
-      position="relative"
-      gridRow={2}
-      gridColumn={1}
-      {...inspectorProps({ fieldId: 'liverpoolPocket' })}>     
-      <StyledBox
-        gridColumnStart={2}
-        zIndex={0}
-        gridArea={{ base: '1 / 1 / 2 / 2' }}
-        >
-        <Heading as="h2" mb={3} style={{justifyContent: 'center', display:'flex', fontFamily: 'robotoMedium'}}>
-          {tituloLiverpool}
-        </Heading>
-      </StyledBox>
+        justifyContent="center"  // Centrar horizontalmente
+        alignItems="center"
+        mb={3}
+        position="relative"
+        gridRow={2}
+        gridColumn={1}
+        {...inspectorProps({ fieldId: 'liverpoolPocket' })}>
+        <StyledBox gridColumnStart={2} zIndex={0} gridArea={{ base: '1 / 1 / 2 / 2' }}>
+          <Heading
+            as="h2"
+            mb={3}
+            style={{ justifyContent: 'center', display: 'flex', fontFamily: 'Arial' }}>
+            {tituloLiverpool}
+          </Heading>
+        </StyledBox>
       </Grid>
-            <Grid
-            templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(2, 1fr)' }}
-            // rowGap={{ base: 6, lg: 6 }}
-            columnGap={{ base: 4, lg: 24 }}
-            >
-            {promocionesLiverpoolCollection?.items.map((image, index) => {
-              return <GridItem key={index}>{image?           
-              <CtfImage
-                imageProps={{
-                  sizes: '100vw',
-                }}
-                {...image}
-              />: null} </GridItem>;
-            })}
-
-          </Grid>
-          {liverpoolPocket?.url && (
-          <CtfImage
-          imageProps={{
-          }}
-          {...liverpoolPocket}
-        />
+      <Grid
+        style={{ margin: '16px'}}
+        templateColumns={{ base: 'repeat(2, 1fr)', lg: 'repeat(2, 1fr)' }}
+        rowGap={{ base: 3, lg: 4 }}
+        columnGap={{ base: 3, lg: 4 }}
+      >
+        {promocionesLiverpoolCollection?.items.map((image, index) => {
+          return (
+            <GridItem key={index}>
+              {image ? (
+                <CtfImage
+                  imageProps={{
+                    sizes: '100vw',
+                  }}
+                  {...image}
+                />
+              ) : null}{' '}
+            </GridItem>
+          );
+        })}
+      </Grid>
+      {liverpoolPocket?.url && (
+        <div style={{ margin: '16px' }}>
+          <CtfImage imageProps={{}} {...liverpoolPocket} />
+        </div>
       )}
     </div>
   );
