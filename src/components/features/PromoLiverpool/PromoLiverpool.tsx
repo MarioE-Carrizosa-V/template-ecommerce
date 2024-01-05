@@ -91,7 +91,7 @@ export const PromoLiverpool = ({
           <Heading
             as="h2"
             mb={3}
-            style={{ justifyContent: 'center', display: 'flex', fontFamily: 'Arial' }}>
+            style={{ textAlign: 'center', fontFamily: 'Arial' }}>
             {tituloLiverpool}
           </Heading>
         </StyledBox>
