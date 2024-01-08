@@ -24,6 +24,10 @@ fragment PageLandingFields on PageLanding {
     items{
         ...ImageFields
   }
+    promoLiverpoolCollection{
+    items{
+        ...ImageFields
+  }
   productsCollection(limit: 6) {
     items {
         ...PageProductFields

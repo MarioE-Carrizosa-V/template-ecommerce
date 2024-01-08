@@ -561,6 +561,7 @@ export type PageLanding = Entry & {
   linkedFrom?: Maybe<PageLandingLinkingCollections>;
   productsCollection?: Maybe<PageLandingProductsCollection>;
   promocionesLiverpoolCollection?: Maybe<AssetCollection>;
+  promoLiverpoolCollection?: Maybe<AssetCollection>;
   tituloLiverpool?: Maybe<Scalars['String']>;
   liverpoolPocket?: Maybe<Asset>;
   seoFields?: Maybe<ComponentSeo>;
@@ -574,6 +575,13 @@ export type PageLandingHeroBannerHeadlineArgs = {
 };
 
 export type PageLandingpromocionesLiverpoolCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']>;
+  locale?: InputMaybe<Scalars['String']>;
+  preview?: InputMaybe<Scalars['Boolean']>;
+  skip?: InputMaybe<Scalars['Int']>;
+};
+
+export type PageLandingpromoLiverpoolCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']>;
   locale?: InputMaybe<Scalars['String']>;
   preview?: InputMaybe<Scalars['Boolean']>;
@@ -648,6 +656,7 @@ export type PageLandingFilter = {
   heroBannerHeadline_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']>>>;
   heroBannerImage_exists?: InputMaybe<Scalars['Boolean']>;
   promocionesLiverpoolCollection_exists?: InputMaybe<Scalars['Boolean']>;
+  promoLiverpoolCollection_exists?: InputMaybe<Scalars['Boolean']>;
   internalName?: InputMaybe<Scalars['String']>;
   internalName_contains?: InputMaybe<Scalars['String']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']>;
@@ -1149,6 +1158,10 @@ export type PageLandingFieldsFragment = { __typename: 'PageLanding', internalNam
     promocionesLiverpoolCollection?: { __typename?: 'AssetCollection', items: Array<(
       { __typename?: 'Asset' }
       & ImageFieldsFragment
+    ) | null> } | null,     
+    promoLiverpoolCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & ImageFieldsFragment
     ) | null> } | null };
 
 export type PageLandingQueryVariables = Exact<{
@@ -1317,7 +1330,12 @@ export const PageLandingFieldsFragmentDoc = gql`
   liverpoolPocket{
     ...ImageFields
   }
-  promocionesLiverpoolCollection(limit: 6) {
+  promocionesLiverpoolCollection {
+    items {
+      ...ImageFields
+    }
+  }
+  promoLiverpoolCollection {
     items {
       ...ImageFields
     }

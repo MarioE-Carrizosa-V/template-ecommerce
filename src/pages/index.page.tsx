@@ -29,7 +29,6 @@ const Page = (props: InferGetServerSidePropsType<typeof getServerSideProps>) => 
             //   lg: 16,
             // }}
           />
-          <br />
           <PromoLiverpool {...page} />
         </Box>
       )}

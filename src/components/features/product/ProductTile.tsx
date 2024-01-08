@@ -18,10 +18,12 @@ export const ProductTile = ({
   const [hovered, setHovered] = useState(false);
 
   const shadow = {
+    height: '90%',
     boxShadow: '0px 0px 5px 0px rgba(0, 0, 0, 0.5)'
   };
 
   const noShadow = {
+    height: '90%',
     boxShadow: 'none',
   }
   return slug ? (
