@@ -104,7 +104,7 @@ export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
       <div style={{ margin: '0 auto', maxWidth: '1600px', width: '100%' }}>
         <Carousel
           style={{ margin: '16px auto', maxWidth: '1600px', width: '100%' }}
-          slidesToShow={slidesToShow}
+          slidesToShow={slidesToShow < products?.length? slidesToShow: products?.length }
           wrapAround
           renderCenterRightControls={props => (showControls ? <CustomControls {...props} /> : null)}
           renderCenterLeftControls={() => null}
