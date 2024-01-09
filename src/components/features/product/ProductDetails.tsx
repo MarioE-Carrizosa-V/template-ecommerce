@@ -44,7 +44,7 @@ export const ProductDetails = ({
   ];
     
   return (
-    <Container>
+    <Container style={{margin: '16px auto'}}>
       <Grid templateColumns="repeat(12, 1fr)" gap={{ base: 5, lg: 12 }}>
         <GridItem colSpan={{ base: 12, lg: 6, xl: 6 }}>
 
@@ -67,7 +67,6 @@ export const ProductDetails = ({
         </GridItem>
         <GridItem colSpan={{ base: 12, lg: 6, xl: 6 }} pt={{ lg: 20 }}>
           <Box
-            width="100%"
             bg={theme.f36.gray100}
             mb="auto"
             borderRadius={4}
