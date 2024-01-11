@@ -9,6 +9,7 @@ import { CtfImage } from '@src/components/features/contentful/ctf-image/CtfImage
 import { HEADER_HEIGHT } from '@src/components/templates/header';
 import { PageLandingFieldsFragment } from '@src/lib/__generated/sdk';
 
+
 const StyledBox = styled(Box)`
   img {
     width: 100%;
@@ -19,6 +20,7 @@ const StyledBox = styled(Box)`
 `;
 
 export const HeroBanner = ({
+  
   // Tutorial: contentful-and-the-starter-template.md
   // Uncomment the line below to make the Greeting field available to render
   // greeting,
