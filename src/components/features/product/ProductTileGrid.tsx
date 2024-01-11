@@ -93,7 +93,7 @@ export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
   }, []);
 
   return (
-    <Container style={{ maxWidth: '1600px', margin: '16px auto' }}>
+    <Container style={{ maxWidth: '1600px', margin: '16px auto'}}>
       <br />
       {title && (
         <Heading as="h3" style={{ textAlign: 'center', fontFamily: 'Helvetica' }}>
@@ -103,9 +103,10 @@ export const ProductTileGrid = ({ title, products }: ProductTileGridProps) => {
       <br />
       <div style={{ margin: '0 auto', maxWidth: '1600px', width: '100%' }}>
         <Carousel
-          style={{ margin: '16px auto', maxWidth: '1600px', width: '100%' }}
-          slidesToShow={slidesToShow < products?.length? slidesToShow: products?.length }
+          style={{ margin: '16px auto', maxWidth: '1600px', width: '100%'}}
+          slidesToShow={slidesToShow <= products?.length? slidesToShow: products?.length }
           wrapAround
+          autoplay={true}
           renderCenterRightControls={props => (showControls ? <CustomControls {...props} /> : null)}
           renderCenterLeftControls={() => null}
           renderBottomCenterControls={() => null}>

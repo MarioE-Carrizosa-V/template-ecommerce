@@ -44,7 +44,7 @@ export const ProductDetails = ({
   ];
     
   return (
-    <Container style={{margin: '16px auto'}}>
+    <Container style={{maxWidth: '1600px', margin: '16px auto'}}>
       <Grid templateColumns="repeat(12, 1fr)" gap={{ base: 5, lg: 12 }}>
         <GridItem colSpan={{ base: 12, lg: 6, xl: 6 }}>
 
